@@ -1,5 +1,3 @@
-"""Решения задач на NumPy."""
-
 import numpy as np
 from grader_contracts.numpy_tasks import (
     BinarizeInput, ChessInput, EllipseInput, MatrixInput, MatrixStatistics,
@@ -53,8 +51,6 @@ def matrix_statistics(data: RandomMatrixInput) -> MatrixStatistics:
     rng = np.random.default_rng(seed)
     matrix = rng.normal(loc=mean, scale=std, size=(rows, columns))
     
-    # ВАЖНО: если грейдер выдаст ошибку про названия полей, 
-    # проверь файл grader_contracts/numpy_tasks.py и исправь row_means на то, что там написано.
     return MatrixStatistics(
         matrix=matrix,
         row_means=matrix.mean(axis=1),
@@ -125,8 +121,8 @@ def analyze_time_series(data: TimeSeriesInput) -> TimeSeriesStatistics:
         mean=float(values.mean()),
         variance=float(values.var()),
         std=float(values.std()),
-        local_maxima=np.array(local_max, dtype=int),
-        local_minima=np.array(local_min, dtype=int),
+        local_maxima_indices=np.array(local_max, dtype=int),
+        local_minima_indices=np.array(local_min, dtype=int),
         moving_average=moving,
     )
 
