@@ -1,87 +1,62 @@
-from dataclasses import dataclass
-from typing import Any
+"""Заготовки задач на NumPy."""
+
+import numpy as np
+from grader_contracts.numpy_tasks import (
+    BinarizeInput, ChessInput, EllipseInput, MatrixInput, MatrixStatistics,
+    MatrixVectorBatchInput, OneHotInput, RandomMatrixInput, RectangleInput,
+    TimeSeriesInput, TimeSeriesStatistics,
+)
 
 
-@dataclass(frozen=True)
-class MatrixVectorBatchInput:
-    matrices: Any
-    vectors: Any
+def sum_prod(data: MatrixVectorBatchInput) -> np.ndarray:
+    matrices, vectors = data.matrices, data.vectors
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class BinarizeInput:
-    matrix: Any
-    threshold: float = 0.5
+def binarize(data: BinarizeInput) -> np.ndarray:
+    matrix, threshold = data.matrix, data.threshold
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class MatrixInput:
-    matrix: Any
+def unique_rows(data: MatrixInput) -> list[list[float]]:
+    matrix = data.matrix
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class RandomMatrixInput:
-    rows: int
-    columns: int
-    mean: float = 0.0
-    std: float = 1.0
-    seed: int = 42
+def unique_columns(data: MatrixInput) -> list[list[float]]:
+    matrix = data.matrix
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class MatrixStatistics:
-    matrix: Any
-    row_means: Any
-    column_means: Any
-    row_variances: Any
-    column_variances: Any
+def matrix_statistics(data: RandomMatrixInput) -> MatrixStatistics:
+    rows, columns, mean, std, seed = data.rows, data.columns, data.mean, data.std, data.seed
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class ChessInput:
-    rows: int
-    columns: int
-    first: float
-    second: float
+def chess(data: ChessInput) -> np.ndarray:
+    rows, columns, first, second = data.rows, data.columns, data.first, data.second
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class RectangleInput:
-    width: int
-    height: int
-    image_height: int
-    image_width: int
-    shape_color: tuple[int, int, int]
-    background_color: tuple[int, int, int]
+def draw_rectangle(data: RectangleInput) -> np.ndarray:
+    width, height = data.width, data.height
+    image_height, image_width = data.image_height, data.image_width
+    shape_color, background_color = data.shape_color, data.background_color
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class EllipseInput:
-    semi_axis_x: int
-    semi_axis_y: int
-    image_height: int
-    image_width: int
-    shape_color: tuple[int, int, int]
-    background_color: tuple[int, int, int]
+def draw_ellipse(data: EllipseInput) -> np.ndarray:
+    semi_axis_x, semi_axis_y = data.semi_axis_x, data.semi_axis_y
+    image_height, image_width = data.image_height, data.image_width
+    shape_color, background_color = data.shape_color, data.background_color
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class TimeSeriesInput:
-    values: Any
-    window: int
+def analyze_time_series(data: TimeSeriesInput) -> TimeSeriesStatistics:
+    values, window = data.values, data.window
+    raise NotImplementedError  # TODO
 
 
-@dataclass(frozen=True)
-class TimeSeriesStatistics:
-    mean: float
-    variance: float
-    std: float
-    local_maxima_indices: Any
-    local_minima_indices: Any
-    moving_average: Any
-
-
-@dataclass(frozen=True)
-class OneHotInput:
-    labels: Any
-    class_count: int | None = None
+def one_hot(data: OneHotInput) -> np.ndarray:
+    labels, class_count = data.labels, data.class_count
+    raise NotImplementedError  # TODO
